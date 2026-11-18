@@ -15,6 +15,8 @@ docs/
   contact_force_comparison.csv
   cylinder_comparison.png
   cylinder_comparison.csv
+scripts/
+  generate_contact_plots.m
 rolling_params.m             Parameters for the example
 rolling_params_36.m          Parameters for the 36-contact example
 ```
@@ -39,8 +41,8 @@ open_system("examples/rolling_contact_test")
 ```
 
 Run the simulation from Simulink. The example combines the sliding,
-linear, and rolling contact models on one mechanical system. Diagnostic
-scopes and logging blocks are intentionally omitted from the example.
+linear, and rolling contact models on one mechanical system and runs for
+5 seconds.
 
 To run the second comparison:
 
@@ -52,6 +54,29 @@ open_system("examples/rolling_contact_36_example")
 This example replaces the square block with a cylinder using the 36-point
 sliding-contact wheel from the ballbot model. The linear-contact link is
 removed, and both contact paths are driven by the same one-second force pulse.
+The example runs for 2 seconds.
+
+The models retain To Workspace blocks for friction and normal force. To
+regenerate the figures and CSV files from those logs:
+
+```matlab
+run("scripts/generate_contact_plots.m")
+```
+
+The first example logs:
+
+```text
+log_square_Fy, log_square_Fx
+log_rolling_Fy, log_rolling_Fx
+```
+
+The second example logs the net force at the 36-contact cylinder center of
+mass:
+
+```text
+log_36_Fy_CoM, log_36_Fx_CoM
+log_rolling_Fy, log_rolling_Fx
+```
 
 ## Models
 
@@ -158,7 +183,7 @@ rolling and opposes wheel rotation.
 
 ## Example results
 
-The example runs for 12 seconds. The figure below compares the longitudinal
+The first example runs for 5 seconds. The figure below compares the longitudinal
 friction force and normal contact force for the square block and cylinder
 block. The wheel material is softened to `E = 120 kPa` so the normal-force
 response is easier to distinguish.
@@ -169,8 +194,17 @@ The corresponding data are in
 [`docs/contact_force_comparison.csv`](docs/contact_force_comparison.csv).
 
 The second example compares the 36-patch sliding cylinder with the continuous
-rolling-contact cylinder. Its per-patch stiffness values are chosen so the
-aggregate stiffness is comparable to the rolling model.
+rolling-contact cylinder. Forces from all 36 contact patches are summed at
+the cylinder center of mass:
+
+```math
+F_{x,\mathrm{CoM}}=\sum_{i=1}^{36}F_{x,i},
+\qquad
+F_{y,\mathrm{CoM}}=\sum_{i=1}^{36}F_{y,i}.
+```
+
+Its per-patch stiffness values are chosen so the aggregate stiffness is
+comparable to the rolling model.
 
 ![36-contact and rolling-cylinder force comparison](docs/cylinder_comparison.png)
 
