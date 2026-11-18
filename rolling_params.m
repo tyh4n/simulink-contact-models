@@ -1,7 +1,7 @@
 %% Contact Model
-k_gy = 80000;       % vertical ground interaction stiffness [N/m]
+k_gy = 300e3;       % vertical ground interaction stiffness [N/m]
 v_gy_max = 0.03;    % maximum vertical ground relaxation speed [m/s]
-k_gx = 8000;        % horizontal ground interaction stiffness [N/m]
+k_gx = 300e3;        % horizontal ground interaction stiffness [N/m]
 v_gx_max = 0.03;    % maximum horizontal ground relaxation speed [m/s]
 mu_stick = 0.9;     % stiction coefficient
 mu_slide = 0.8;     % sliding coefficient
@@ -17,9 +17,9 @@ m_wheel = 10;       % wheel mass [kg]
 m_body = 10;        % load-carrying body mass [kg]
 E = 120e5;          % Wheel elastic modulus [Pa]
 % miu_x = 0.75;     % Logitutional coefficient of friction 
-k_x = 2700e3;       % Logitutional stiffness [N/m^2]
-miu_s = 0.75;       % Sliding coefficient of friction
-miu_p = 1;          % Peak coefficient of friciton
+k_x = 300e3;       % Logitutional stiffness [N/m^2]
+miu_s = 0.90;       % Rolling-contact sliding coefficient
+miu_p = 1.25;       % Rolling-contact peak coefficient
 
 %% Rolling resistance
 f_rr = 0.01;         % Equivalent rolling resistance coefficient

@@ -73,6 +73,11 @@ log_square_Fy, log_square_Fx
 log_rolling_Fy, log_rolling_Fx
 ```
 
+The rolling contact uses `miu_p = 1.25` and `miu_s = 0.90`. The independent
+36-point sliding contact remains at its original `mu_stick = 0.90` and
+`mu_slide = 0.80`, so the rolling coefficient can be tuned without changing
+the sliding cylinder.
+
 The second example logs the net force at the 36-contact cylinder center of
 mass:
 

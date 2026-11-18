@@ -9,6 +9,6 @@ r_ball = r_wheel;
 k_gy = 20;
 k_gx = 60;
 
-% Match the friction coefficients used by the rolling contact model.
-mu_stick = miu_p;
-mu_slide = miu_s;
+% Keep the 36-point sliding model on its original coefficient set.
+mu_stick = 0.9;
+mu_slide = 0.8;
