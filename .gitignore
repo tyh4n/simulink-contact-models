@@ -1,0 +1,5 @@
+*.slxc
+slprj/
+*.asv
+*.r2024b
+.DS_Store
