@@ -6,18 +6,10 @@ with `rolling_contact_test.slx` as the combined demonstration.
 ## Repository contents
 
 ```text
-models/
-  ContactModels.slx          Combined Simulink library
-  SlidingFrictionModel.slx   Static/kinetic sliding contact
-  LinearContactModel.slx     Linear spring-damper contact
-  RollingContactModel.slx    Brush-model rolling contact and rolling resistance
 examples/
   rolling_contact_test.slx   Runnable example containing all three models
-scripts/
-  generate_example_plots.m   Recreates the example CSV and figure
 docs/
-  example_contact_forces.csv
-  example_contact_forces.png
+  contact_force_comparison.png
 rolling_params.m             Parameters for the example
 ```
 
@@ -41,13 +33,8 @@ open_system("examples/rolling_contact_test")
 ```
 
 Run the simulation from Simulink. The example combines the sliding,
-linear, and rolling contact models on one mechanical system.
-
-To regenerate the force plots:
-
-```matlab
-run("scripts/generate_example_plots.m")
-```
+linear, and rolling contact models on one mechanical system. Diagnostic
+scopes and logging blocks are intentionally omitted from the example.
 
 ## Models
 
@@ -67,7 +54,7 @@ The tangential model selects between static and kinetic friction:
 ```math
 |F_s| \leq \mu_{\mathrm{stick}}F_n,
 \qquad
-F_k=-\mu_{\mathrm{slide}}F_n\,\operatorname{sgn}(v_t).
+F_k=-\mu_{\mathrm{slide}}F_n\,\mathrm{sgn}(v_t).
 ```
 
 The static branch retains the foot-point force until its trial elastic force
@@ -154,13 +141,12 @@ rolling and opposes wheel rotation.
 
 ## Example results
 
-The example runs for 12 seconds. The figure below shows the longitudinal
-friction force and normal contact force from the rolling contact model.
+The example runs for 12 seconds. The figure below compares the longitudinal
+friction force and normal contact force for the square block and cylinder
+block. The wheel material is softened to `E = 120 kPa` so the normal-force
+response is easier to distinguish.
 
-![Friction and normal force versus time](docs/example_contact_forces.png)
-
-The raw trace is available in
-[`docs/example_contact_forces.csv`](docs/example_contact_forces.csv).
+![Square and cylinder contact-force comparison](docs/contact_force_comparison.png)
 
 ## Parameters
 
