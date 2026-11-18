@@ -64,7 +64,7 @@ run(fullfile(repoRoot, 'rolling_params_36.m'))
 model = 'rolling_contact_36_example';
 load_system(fullfile(modelFolder, [model '.slx']))
 set_param(model, 'SimMechanicsOpenEditorOnUpdate', 'off')
-out = sim(model, 'StopTime', '2', ...
+out = sim(model, 'StopTime', '5', ...
     'SimulationMode', 'normal', 'ReturnWorkspaceOutputs', 'on');
 
 slidingFy = out.get('log_36_Fy_CoM');

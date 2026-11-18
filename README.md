@@ -185,8 +185,8 @@ rolling and opposes wheel rotation.
 
 The first example runs for 5 seconds. The figure below compares the longitudinal
 friction force and normal contact force for the square block and cylinder
-block. The wheel material is softened to `E = 120 kPa` so the normal-force
-response is easier to distinguish.
+block. The wheel material uses the restored value `E = 12 MPa`
+(`120e5 Pa`).
 
 ![Square and cylinder contact-force comparison](docs/contact_force_comparison.png)
 
