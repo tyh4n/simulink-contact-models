@@ -12,7 +12,9 @@ examples/
                             Sliding-vs-rolling cylinder comparison
 docs/
   contact_force_comparison.png
+  contact_force_comparison.csv
   cylinder_comparison.png
+  cylinder_comparison.csv
 rolling_params.m             Parameters for the example
 rolling_params_36.m          Parameters for the 36-contact example
 ```
@@ -163,11 +165,17 @@ response is easier to distinguish.
 
 ![Square and cylinder contact-force comparison](docs/contact_force_comparison.png)
 
+The corresponding data are in
+[`docs/contact_force_comparison.csv`](docs/contact_force_comparison.csv).
+
 The second example compares the 36-patch sliding cylinder with the continuous
 rolling-contact cylinder. Its per-patch stiffness values are chosen so the
 aggregate stiffness is comparable to the rolling model.
 
 ![36-contact and rolling-cylinder force comparison](docs/cylinder_comparison.png)
+
+The corresponding data are in
+[`docs/cylinder_comparison.csv`](docs/cylinder_comparison.csv).
 
 ## Parameters
 
