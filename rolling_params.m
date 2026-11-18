@@ -12,6 +12,7 @@ v_c_max = 0.03;          % maximum contact relaxation speed [m/s]
 
 %% Wheel parameters
 r_wheel = 0.5;      % wheel radius [m]
+r_ball = r_wheel;   % radius used by the 36-point sliding contact model [m]
 m_wheel = 10;       % wheel mass [kg]
 m_body = 10;        % load-carrying body mass [kg]
 E = 120e3;          % Soft wheel elastic modulus [Pa]

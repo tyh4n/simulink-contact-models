@@ -8,9 +8,13 @@ with `rolling_contact_test.slx` as the combined demonstration.
 ```text
 examples/
   rolling_contact_test.slx   Runnable example containing all three models
+  rolling_contact_36_example.slx
+                            Sliding-vs-rolling cylinder comparison
 docs/
   contact_force_comparison.png
+  cylinder_comparison.png
 rolling_params.m             Parameters for the example
+rolling_params_36.m          Parameters for the 36-contact example
 ```
 
 ## Requirements
@@ -35,6 +39,17 @@ open_system("examples/rolling_contact_test")
 Run the simulation from Simulink. The example combines the sliding,
 linear, and rolling contact models on one mechanical system. Diagnostic
 scopes and logging blocks are intentionally omitted from the example.
+
+To run the second comparison:
+
+```matlab
+rolling_params_36
+open_system("examples/rolling_contact_36_example")
+```
+
+This example replaces the square block with a cylinder using the 36-point
+sliding-contact wheel from the ballbot model. The linear-contact link is
+removed, and both contact paths are driven by the same one-second force pulse.
 
 ## Models
 
@@ -147,6 +162,12 @@ block. The wheel material is softened to `E = 120 kPa` so the normal-force
 response is easier to distinguish.
 
 ![Square and cylinder contact-force comparison](docs/contact_force_comparison.png)
+
+The second example compares the 36-patch sliding cylinder with the continuous
+rolling-contact cylinder. Its per-patch stiffness values are chosen so the
+aggregate stiffness is comparable to the rolling model.
+
+![36-contact and rolling-cylinder force comparison](docs/cylinder_comparison.png)
 
 ## Parameters
 
